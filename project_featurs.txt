@@ -1,0 +1,15 @@
+## Vehicle Renting Project
+
+Pages:
+     
+     - Login
+        - Dashboard
+
+     - Vehicles
+
+     - Booking
+        - Customer From
+        - Booking Form
+     - Customer
+
+
