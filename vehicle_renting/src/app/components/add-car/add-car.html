@@ -1,0 +1,46 @@
+<!-- Backdrop overlay -->
+<div class="fixed inset-0 bg-black/50 z-40" [class.hidden]="!isOpen()" (click)="closeModal()"></div>
+
+<!-- Modal container -->
+<div class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" [class.hidden]="!isOpen()">
+  <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md pointer-events-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">New Car</h2>
+      <button type="button" (click)="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+        ×
+      </button>
+    </div>
+
+    <form action="">
+      <label for="">Reg No</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter car Reg No" />
+      <label for="">Brand</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter brand name" />
+      <label for="">Model</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter model name" />
+      <label for="">Year</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter year" />
+      <label for="">Color</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter color" />
+      <label for="">Daily Rate</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter daily rate" />
+      <label for="">Car Image Url</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter car image URL" />
+    </form>
+
+    <div class="flex gap-3 mt-6">
+      <button type="button" (click)="closeModal()"
+        class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
+        Cancel
+      </button>
+      <button type="button" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+        Save Car
+      </button>
+    </div>
+  </div>
+</div>

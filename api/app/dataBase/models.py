@@ -14,6 +14,7 @@ class CarBooking(SQLModel, table=True):
     BookingDate: str = Field(nullable=False)
     Discount: int = Field(default=0, nullable=False)
     TotalBillAmount: float = Field(nullable=False)
+    BookingUid: str = Field(nullable=False, unique=True)
 
     customer: list[Customer] = Relationship(back_populates="bookings")
     car: list[Cars] = Relationship(back_populates="bookings")

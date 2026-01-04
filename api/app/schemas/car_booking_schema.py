@@ -8,6 +8,7 @@ class CarBookingBase(SQLModel):
     BookingDate: str
     Discount: int = 0
     TotalBillAmount: float
+    BookingUid: str
 
 
 class CarBookingResponse(CarBookingBase):
@@ -26,3 +27,4 @@ class CarBookingUpdate(SQLModel):
     BookingDate: str | None = None
     Discount: int | None = 0
     TotalBillAmount: float | None = None
+    BookingUid: str | None = None

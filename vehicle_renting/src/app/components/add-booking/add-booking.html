@@ -1,0 +1,57 @@
+<!-- Backdrop overlay -->
+<div class="fixed inset-0 bg-black/50 z-40" [class.hidden]="!isOpen()" (click)="closeModal()"></div>
+
+<!-- Modal container -->
+<div class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" [class.hidden]="!isOpen()">
+  <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md pointer-events-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">New Booking</h2>
+      <button type="button" (click)="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+        ×
+      </button>
+    </div>
+
+    <form action="">
+      <label for="">Customer Name</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter customer name" />
+      <label for="">Customer City</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter customer city" />
+      <label for="">Mobile No</label>
+      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter mobile number" />
+      <label for="">Email</label>
+      <input type="email" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter email" />
+      <label for="">Select Car</label>
+      <select class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" name="" id="">
+        <option value="" disabled selected>Select Car</option>
+        <option value="car1">Car 1</option>
+        <option value="car2">Car 2</option>
+        <option value="car3">Car 3</option>
+      </select>
+      <label for="">Booking Date</label>
+      <input type="date" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter booking date" />
+      <label for="">Discount</label>
+      <input type="number" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter discount" />
+      <label for="">Total Bill Amount</label>
+      <input type="number" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        placeholder="Enter total bill amount" />
+    </form>
+
+    <div class="flex gap-3 mt-6">
+      <button type="button" (click)="closeModal()"
+        class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
+        Cancel
+      </button>
+      <button type="submit" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+        Submit
+      </button>
+      <button type="button" class="flex-1 bg-green-600 text-white p-2 rounded hover:bg-green-700 transition">
+        Update
+      </button>
+    </div>
+  </div>
+</div>
