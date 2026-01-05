@@ -11,26 +11,28 @@
       </button>
     </div>
 
-    <form action="">
+    <form>
       <label for="">Reg No</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter car Reg No" />
+      <input type="text" (change)="updateForm('RegNo', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter car Reg No" />
       <label for="">Brand</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter brand name" />
+      <input type="text" (change)="updateForm('Brand', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter brand name" />
       <label for="">Model</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter model name" />
+      <input type="text" (change)="updateForm('Model', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter model name" />
       <label for="">Year</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter year" />
+      <input type="text" (change)="updateForm('Year', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter year" />
       <label for="">Color</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter color" />
+      <input type="text" (change)="updateForm('Color', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter color" />
       <label for="">Daily Rate</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter daily rate" />
+      <input type="text" (change)="updateForm('Daily_Rate', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter daily rate" />
       <label for="">Car Image Url</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter car image URL" />
+      <input type="text" (change)="updateForm('CarImage', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter car image URL" />
     </form>
 
     <div class="flex gap-3 mt-6">
@@ -38,7 +40,8 @@
         class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
         Cancel
       </button>
-      <button type="button" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+      <button type="button" (click)="onSaveCar()"
+        class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
         Save Car
       </button>
     </div>

@@ -2,10 +2,13 @@
   <button type="button" class="bg-blue-600 text-white p-2 rounded-xl shadow-lg/80" (click)="openAddCarModal()">Add
     Car</button>
   <div class="basis-1/2 flex flex-row gap-6 flex-wrap justify-center">
-    <app-cars-card />
-    <app-cars-card />
-    <app-cars-card />
-    <app-cars-card />
+    @if (carList()) {
+    @for (car of carList(); track $index) {
+    <app-cars-card [car]="car" />
+    }
+    }@else {
+    <p>any</p>
+    }
 
   </div>
   <app-add-car [isOpen]="isAddCarModalOpen()" (onClose)="closeAddCarModal()" />

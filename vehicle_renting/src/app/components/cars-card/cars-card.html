@@ -1,18 +1,21 @@
+@if(car(); as currentCar){
 <div class="flex flex-col bg-white shadow-md/80 rounded-xl w-72">
   <img class='w-72 h-48 object-cover'
     src="https://img.freepik.com/psd-gratuitas/carro-isolado-preto_23-2151852894.jpg?semt=ais_hybrid&w=740&q=80"
     alt="image">
+
   <div class="p-4 text-sm">
-    <p class="text-slate-600">$ 29.00</p>
-    <p class="text-slate-800 text-base font-medium my-1.5">Brand</p>
-    <p class="text-slate-500">Model</p>
+    <p class="text-slate-600">{{currentCar?.Daily_Rate}}€</p>
+    <p class="text-slate-800 text-base font-medium my-1.5">{{currentCar?.Brand}}</p>
+    <p class="text-slate-500">{{currentCar?.Model}}</p>
     <div class="grid grid-cols-2 gap-2 mt-3">
       <button class="bg-red-800 text-white py-2 rounded-xl">
         Delete
       </button>
-      <button class="bg-green-800 text-white py-2 rounded-xl">
+      <button class="bg-green-800 text-white py-2 rounded-xl" (click)="selectCar(currentCar)">
         Edit
       </button>
     </div>
   </div>
 </div>
+}
