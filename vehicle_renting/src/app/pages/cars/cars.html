@@ -4,12 +4,22 @@
   <div class="basis-1/2 flex flex-row gap-6 flex-wrap justify-center">
     @if (carList()) {
     @for (car of carList(); track $index) {
-    <app-cars-card [car]="car" />
+    <!-- Car Card Component -->
+    <!-- [car] - Passes individual car data to the car card component from cars.ts to cars-card.ts -->
+    <!-- (onEditCar) - Event emitted when the edit button is clicked in cars-card.ts to handle editing in cars.ts -->
+    <!-- (onDeleteCar) - Event emitted when the delete button is clicked in cars-card.ts to handle deletion in cars.ts -->
+    <app-cars-card [car]="car" (onEditCar)="openEditCarModal($event)" (onDeleteCar)="handleDeleteCar($event)" />
     }
     }@else {
     <p>any</p>
     }
 
   </div>
-  <app-add-car [isOpen]="isAddCarModalOpen()" (onClose)="closeAddCarModal()" />
+  <!-- Add Car Modal -->
+  <!-- [isOpen] - Controls the visibility of the Add Car modal the code is in cars.ts -->
+  <!-- [updateCar] - Passes the selected car data from cars.ts for editing in add-car.ts -->
+  <!-- (onClose) - Event emitted when the modal is closed to handle any necessary actions from add-car.ts in cars.ts -->
+  <!-- (refresh) - Event emitted to refresh the car list from add-car.ts in cars.ts -->
+  <app-add-car [isOpen]="isAddCarModalOpen()" [updateCar]="selectedCar()" (onClose)="closeAddCarModal()"
+    (refresh)="loadCars()" />
 </div>

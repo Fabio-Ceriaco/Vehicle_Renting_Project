@@ -5,33 +5,35 @@
 <div class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" [class.hidden]="!isOpen()">
   <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md pointer-events-auto">
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold text-gray-800">New Car</h2>
+      <h2 class="text-2xl font-bold text-gray-800">{{ isEditMode() ? 'Edit Car' : 'New Car'}}</h2>
       <button type="button" (click)="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
         ×
       </button>
     </div>
-
+    <!-- Car Form -->
+    <!-- (change) - Updates the form data when an input field changes -->
+    <!-- [value] - Binds the input field value to the form data when it changes -->
     <form>
       <label for="">Reg No</label>
-      <input type="text" (change)="updateForm('RegNo', $event)"
+      <input type="text" (change)="updateForm('RegNo', $event)" [value]="carFormData().RegNo"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter car Reg No" />
       <label for="">Brand</label>
-      <input type="text" (change)="updateForm('Brand', $event)"
+      <input type="text" (change)="updateForm('Brand', $event)" [value]="carFormData().Brand"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter brand name" />
       <label for="">Model</label>
-      <input type="text" (change)="updateForm('Model', $event)"
+      <input type="text" (change)="updateForm('Model', $event)" [value]="carFormData().Model"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter model name" />
       <label for="">Year</label>
-      <input type="text" (change)="updateForm('Year', $event)"
+      <input type="text" (change)="updateForm('Year', $event)" [value]="carFormData().Year"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter year" />
       <label for="">Color</label>
-      <input type="text" (change)="updateForm('Color', $event)"
+      <input type="text" (change)="updateForm('Color', $event)" [value]="carFormData().Color"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter color" />
       <label for="">Daily Rate</label>
-      <input type="text" (change)="updateForm('Daily_Rate', $event)"
+      <input type="text" (change)="updateForm('Daily_Rate', $event)" [value]="carFormData().Daily_Rate"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter daily rate" />
       <label for="">Car Image Url</label>
-      <input type="text" (change)="updateForm('CarImage', $event)"
+      <input type="text" (change)="updateForm('CarImage', $event)" [value]="carFormData().CarImage"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter car image URL" />
     </form>
 
@@ -40,10 +42,19 @@
         class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
         Cancel
       </button>
+      <!--(isEditMode) - Indicates whether the form is in edit mode or new entry mode -->
+      @if (isEditMode()) {
+      <button type="button" (click)="updateCarData()"
+        class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+        Update Car
+      </button>
+      }@else {
       <button type="button" (click)="onSaveCar()"
         class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
         Save Car
       </button>
+      }
+
     </div>
   </div>
 </div>

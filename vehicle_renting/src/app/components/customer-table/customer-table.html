@@ -1,0 +1,30 @@
+<table class="min-w-full divide-y divide-gray-200 border border-gray-200 ">
+  <thead>
+    <tr>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Email</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">City</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Mobile No</th>
+      <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Action</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    @for (customer of customers(); track $index) {
+    <tr class="hover:bg-gray-100">
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{customer.Name}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{customer.Email}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{customer.City}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{customer.MobileNo}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+        <button type="button"
+          class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-hidden focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none"
+          (click)="deleteCustomer(customer)">Delete</button>
+        |
+        <button type="button"
+          class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
+          (click)="editCustomer(customer)">Edit</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

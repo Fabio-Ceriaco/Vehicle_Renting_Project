@@ -1,1 +1,15 @@
-<p>customer works!</p>
+<div class="flex flex-col  items-center min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <button type="button" class=" bg-blue-600 text-white p-2 rounded-xl shadow-lg/80  mb-6"
+    (click)="openAddCustomerModal()">Add
+    Customer</button>
+  <div class="-m-1.5 w-1/2 md:w-full overflow-x-auto">
+    <div class="p-1.5 min-w-full inline-block align-middle">
+      <div class="overflow-hidden rounded-2xl shadow-md/80">
+        <app-customer-table [customers]="customersList()" (onEditCustomer)="openEditCustomerModal($event)"
+          (onDeleteCustomer)="handelDeleteCustomer($event)" />
+      </div>
+    </div>
+  </div>
+  <app-add-customer [isOpen]="isAddCustomerModalOpen()" (onClose)="closeAddCustomerModal()"
+    (refresh)="loadCustomers()" />
+</div>
