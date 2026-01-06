@@ -1,10 +1,13 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel
 
 
 class CarBookingBase(SQLModel):
 
-    CustID: int
-    CarID: int
+    Name: str
+    RegNo: str
+    City: str
+    MobileNo: str
+    Email: str
     BookingDate: str
     Discount: int = 0
     TotalBillAmount: float
@@ -13,11 +16,12 @@ class CarBookingBase(SQLModel):
 
 class CarBookingResponse(CarBookingBase):
 
-    BookingID: int = Field(default=None, primary_key=True)
+    ID: int
 
 
 class CarBookingCreate(CarBookingBase):
-    pass
+    CustID: int | None = None
+    CarID: int | None = None
 
 
 class CarBookingUpdate(SQLModel):

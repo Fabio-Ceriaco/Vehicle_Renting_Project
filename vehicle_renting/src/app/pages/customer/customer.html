@@ -10,6 +10,6 @@
       </div>
     </div>
   </div>
-  <app-add-customer [isOpen]="isAddCustomerModalOpen()" (onClose)="closeAddCustomerModal()"
-    (refresh)="loadCustomers()" />
+  <app-add-customer [isOpen]="isAddCustomerModalOpen()" [updateCustomer]="selectedCustomer()"
+    (onClose)="closeAddCustomerModal()" (refresh)="loadCustomers()" />
 </div>

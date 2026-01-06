@@ -5,8 +5,8 @@
 <div class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none" [class.hidden]="!isOpen()">
   <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md pointer-events-auto">
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold text-gray-800">New Customer</h2>
-      <!-- {{ isEditMode() ? 'Edit Customer' : 'New Customer'}}-->
+      <h2 class="text-2xl font-bold text-gray-800">{{ isEditMode() ? 'Edit Customer' : 'New Customer'}}</h2>
+
       <button type="button" (click)="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
         ×
       </button>
@@ -36,18 +36,17 @@
         Cancel
       </button>
       <!--(isEditMode) - Indicates whether the form is in edit mode or new entry mode -->
-      <!--@if (isEditMode()) {
-      <button type="button" (click)="updateCarData()"
+      @if (isEditMode()) {
+      <button type="button" (click)="updateCustomerData()"
         class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
-        Update Car
+        Update Customer
       </button>
-      }@else {-->
+      }@else {
       <button type="button" (click)="onSaveCustomer()"
         class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
         Save Customer
       </button>
-      <!--}-->
-
+      }
     </div>
   </div>
 </div>

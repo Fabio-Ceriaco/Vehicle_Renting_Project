@@ -1,28 +1,35 @@
-<table class="border-gray-400 border table-auto w-full text-center shadow-lg/50 rounded-2xl
-    overflow-hidden">
-  <thead class="bg-gray-200">
+<table class="min-w-full divide-y divide-gray-200 border border-gray-200 ">
+  <thead>
     <tr>
-      <th class="p-3 border-r border-gray-400 border-b">Name</th>
-      <th class="p-3 border-r border-gray-400 border-b">City</th>
-      <th class="p-3 border-r border-gray-400 border-b">Mobile No</th>
-      <th class="p-3 border-r border-gray-400 border-b">Email</th>
-      <th class="p-3 border-r border-gray-400 border-b">Car</th>
-      <th class="p-3 border-r border-gray-400 border-b">Discount</th>
-      <th class="p-3 border-r border-gray-400 border-b">Total Bill Amount</th>
-      <th class="p-3 border-gray-400 border-b">Actions</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">City</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Mobile No</th>
+      <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Email</th>
+      <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Car RegNo</th>
+      <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Discount</th>
+      <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Total Bill Amount</th>
+      <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Action</th>
     </tr>
   </thead>
-  <tbody>
-    @for (i of [1,2,3,4,5]; track $index) {
-    <tr>
-      <td class="p-3 border-r border-gray-400 border-b">Name</td>
-      <td class="p-3 border-r border-gray-400 border-b">City</td>
-      <td class="p-3 border-r border-gray-400 border-b">Mobile No</td>
-      <td class="p-3 border-r border-gray-400 border-b">Email</td>
-      <td class="p-3 border-r border-gray-400 border-b">Car</td>
-      <td class="p-3 border-r border-gray-400 border-b">Discount</td>
-      <td class="p-3 border-r border-gray-400 border-b">Total Bill Amount</td>
-      <td class="p-3 border-gray-400 border-b">Action</td>
+  <tbody class="divide-y divide-gray-200">
+    @for (booking of bookings(); track $index) {
+    <tr class="hover:bg-gray-100">
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{booking.Name}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.City}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.MobileNo}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.Email}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.RegNo}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.Discount}}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.TotalBillAmount}}</td>
+      <!-- <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+        <button type="button"
+          class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-hidden focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none"
+          (click)="deleteCustomer(customer)">Delete</button>
+        |
+        <button type="button"
+          class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
+          (click)="editCustomer(customer)">Edit</button>
+      </td> -->
     </tr>
     }
   </tbody>

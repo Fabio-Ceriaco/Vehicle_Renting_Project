@@ -13,11 +13,17 @@ export class CarsCard {
   onDeleteCar = output<Car>(); // Emit car ID for deletion
 
   // Emit edit car event to parent component cars.ts
+  // Passes the selected car object for editing
+  // Called when edit button is clicked
+  // emits the car data to the parent component
   editCar(car: Car) {
     this.onEditCar.emit(car);
   }
 
   // Emit delete car event to parent component cars.ts
+  // Passes the selected car object for deletion
+  // Called when delete button is clicked
+  // emits the car data to the parent component
   deleteCar(car: Car) {
     //debugger;
     this.onDeleteCar.emit(car);

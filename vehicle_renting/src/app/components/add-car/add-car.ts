@@ -1,4 +1,4 @@
-import { Component, input, output, signal, inject, effect, OnInit } from '@angular/core';
+import { Component, input, output, signal, inject, effect } from '@angular/core';
 import type { Car } from '../../interface/carInterface';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { ApiService } from '../../services/apiService';
@@ -46,12 +46,16 @@ export class AddCar {
 
   // Close the modal function
   // Emit the close event to parent component cars.ts
+
   closeModal() {
     this.onClose.emit();
   }
 
   // Reset the form data to initial state
   // Used after adding a new car or closing the modal
+  // Sets all fields to empty or default values
+  // Called to clear the form
+
   resetForm() {
     this.carFormData.set({
       Brand: '',
@@ -65,6 +69,11 @@ export class AddCar {
   }
 
   // Update form data on input change
+  // Takes the key of the field and the event
+  // Updates the corresponding field in the carFormData signal
+  // Called on input change events
+  // key: field name (e.g., 'Brand', 'Model')
+  // event: input change event
 
   updateForm(key: string, event: any) {
     //debugger;
@@ -73,6 +82,9 @@ export class AddCar {
 
   // Update existing car function
   // Calls ApiService to update the car
+  // Shows success or error message based on response
+  // Closes modal and emits refresh event on success
+  // Called when saving changes in edit mode
   updateCarData() {
     this.apiService.updateCar(this.carFormData().ID!, this.carFormData()).subscribe((res) => {
       if (res) {
@@ -91,12 +103,17 @@ export class AddCar {
           detail: 'There was an error updating the car',
           life: 3000,
         });
+        this.refresh.emit();
       }
     });
   }
 
   // Save new car function
   // Calls ApiService to add the new car
+  // Shows success or error message based on response
+  // Resets form and closes modal on success
+  // Emits refresh event after adding
+  // Called when saving a new car
   onSaveCar() {
     this.apiService.newCar(this.carFormData()).subscribe((res) => {
       if (res) {
@@ -116,6 +133,7 @@ export class AddCar {
           detail: 'There was an error adding the car',
           life: 3000,
         });
+        this.refresh.emit();
       }
     });
   }

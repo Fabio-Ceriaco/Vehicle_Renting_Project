@@ -24,11 +24,12 @@
       <label for="">Email</label>
       <input type="email" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter email" />
       <label for="">Select Car</label>
+
       <select class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" name="" id="">
         <option value="" disabled selected>Select Car</option>
-        <option value="car1">Car 1</option>
-        <option value="car2">Car 2</option>
-        <option value="car3">Car 3</option>
+        @for (car of carsList(); track $index) {
+        <option value="{{car.ID}}">{{car.RegNo}}</option>
+        }
       </select>
       <label for="">Booking Date</label>
       <input type="date" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"

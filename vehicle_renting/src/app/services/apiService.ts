@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import type { Car } from '../interface/carInterface';
 import { Customers } from '../interface/customerInterface';
+import { Bookings } from '../interface/bookingInterface';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   http = inject(HttpClient);
@@ -46,5 +47,25 @@ export class ApiService {
   // Delete Customer
   deleteCustomer(customerId: number) {
     return this.http.delete(`${this.apiUrl}/customers/${customerId}`);
+  }
+
+  // Get all bookings
+  getBookings() {
+    return this.http.get<Bookings[]>(`${this.apiUrl}/bookings/`);
+  }
+
+  // Add new Booking
+  newBooking(bookingData: Bookings) {
+    return this.http.post(`${this.apiUrl}/bookings/new-booking`, bookingData);
+  }
+
+  // Update existing Booking
+  updateBooking(bookingId: number, bookingData: Bookings) {
+    return this.http.put(`${this.apiUrl}/bookings/${bookingId}`, bookingData);
+  }
+
+  // Delete Booking
+  deleteBooking(bookingId: number) {
+    return this.http.delete(`${this.apiUrl}/bookings/${bookingId}`);
   }
 }

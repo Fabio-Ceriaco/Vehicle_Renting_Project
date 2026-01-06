@@ -14,11 +14,17 @@ export class CustomerTable {
   onDeleteCustomer = output<Customers>(); // Emit customer for deletion
 
   // Emit edit customer event to parent component customer.ts
+  // Passes the selected customer object for editing
+  // Called when edit button is clicked
+  // emits the customer data to the parent component
   editCustomer(customer: Customers) {
     this.onEditCustomer.emit(customer);
   }
 
   // Emit delete customer event to parent component customer.ts
+  // Passes the selected customer object for deletion
+  // Called when delete button is clicked
+  // emits the customer data to the parent component
   deleteCustomer(customer: Customers) {
     this.onDeleteCustomer.emit(customer);
   }

@@ -44,6 +44,11 @@ export class Customer implements OnInit {
     this.selectedCustomer.set(null);
   }
 
+  // method to handle deleting a customer
+  // calls ApiService to delete customer by ID
+  // updates customersList signal to remove deleted customer
+  // called when delete action is triggered
+  // customer: the customer object to be deleted
   handelDeleteCustomer(customer: any) {
     if (customer.ID) {
       this.apiService.deleteCustomer(customer.ID).subscribe(() => {
@@ -52,6 +57,10 @@ export class Customer implements OnInit {
     }
   }
 
+  // method to load customers from API
+  // calls ApiService to get customers
+  // updates customersList signal with fetched data
+  // called on component initialization and after adding/editing customers
   loadCustomers() {
     this.apiService.getCustomers().subscribe((res) => {
       if (res) {

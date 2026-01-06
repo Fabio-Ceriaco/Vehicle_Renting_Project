@@ -16,8 +16,8 @@ class CarBooking(SQLModel, table=True):
     TotalBillAmount: float = Field(nullable=False)
     BookingUid: str = Field(nullable=False, unique=True)
 
-    customer: list[Customer] = Relationship(back_populates="bookings")
-    car: list[Cars] = Relationship(back_populates="bookings")
+    customer: Customer = Relationship(back_populates="bookings")
+    car: Cars = Relationship(back_populates="bookings")
 
 
 class Cars(SQLModel, table=True):
@@ -36,7 +36,7 @@ class Cars(SQLModel, table=True):
     CarImage: str = Field(nullable=True)
     RegNo: str = Field(nullable=False, unique=True)
 
-    bookings: list[CarBooking] = Relationship(back_populates="car")
+    bookings: CarBooking = Relationship(back_populates="car")
 
 
 class Customer(SQLModel, table=True):
@@ -52,4 +52,4 @@ class Customer(SQLModel, table=True):
     MobileNo: str = Field(nullable=False, unique=True)
     Email: str = Field(nullable=False, unique=True)
 
-    bookings: list[CarBooking] = Relationship(back_populates="customer")
+    bookings: CarBooking = Relationship(back_populates="customer")

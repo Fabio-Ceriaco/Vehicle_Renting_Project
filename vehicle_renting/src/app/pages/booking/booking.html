@@ -2,7 +2,7 @@
   <button type="button" class="bg-blue-600 text-white p-2 rounded-xl shadow-lg/80" (click)="openAddBookingModal()">Add
     Booking</button>
   <div class="basis-1 flex flex-row gap-6  justify-center">
-    <app-booking-table />
+    <app-booking-table [bookings]="bookingList()" />
 
   </div>
   <app-add-booking [isOpen]="isAddBookingModalOpen()" (onClose)="closeAddBookingModal()" />
