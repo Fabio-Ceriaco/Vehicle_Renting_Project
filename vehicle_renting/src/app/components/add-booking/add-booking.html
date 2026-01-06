@@ -13,33 +13,35 @@
 
     <form action="">
       <label for="">Customer Name</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter customer name" />
+      <input type="text" (change)="updateForm('Name', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter customer name" />
       <label for="">Customer City</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter customer city" />
+      <input type="text" (change)="updateForm('City', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter customer city" />
       <label for="">Mobile No</label>
-      <input type="text" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter mobile number" />
+      <input type="text" (change)="updateForm('MobileNo', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter mobile number" />
       <label for="">Email</label>
-      <input type="email" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter email" />
+      <input type="email" (change)="updateForm('Email', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter email" />
       <label for="">Select Car</label>
 
-      <select class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" name="" id="">
+      <select (change)="updateForm('RegNo', $event)" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
+        name="" id="">
         <option value="" disabled selected>Select Car</option>
         @for (car of carsList(); track $index) {
-        <option value="{{car.ID}}">{{car.RegNo}}</option>
+        <option value="{{car.RegNo}}">{{car.RegNo}}</option>
         }
       </select>
       <label for="">Booking Date</label>
-      <input type="date" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter booking date" />
+      <input type="date" (change)="updateForm('BookingDate', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter booking date" />
       <label for="">Discount</label>
-      <input type="number" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter discount" />
+      <input type="number" (change)="updateForm('Discount', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter discount" />
       <label for="">Total Bill Amount</label>
-      <input type="number" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        placeholder="Enter total bill amount" />
+      <input type="number" (change)="updateForm('TotalBillAmount', $event)"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter total bill amount" />
     </form>
 
     <div class="flex gap-3 mt-6">
@@ -47,7 +49,8 @@
         class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
         Cancel
       </button>
-      <button type="submit" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition">
+      <button type="submit" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+        (click)="onSaveBooking()">
         Submit
       </button>
       <button type="button" class="flex-1 bg-green-600 text-white p-2 rounded hover:bg-green-700 transition">

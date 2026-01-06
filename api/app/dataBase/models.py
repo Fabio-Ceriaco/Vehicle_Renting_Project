@@ -1,4 +1,5 @@
 from sqlmodel import SQLModel, Field, Relationship
+from uuid import UUID, uuid4
 
 
 class CarBooking(SQLModel, table=True):
@@ -14,7 +15,7 @@ class CarBooking(SQLModel, table=True):
     BookingDate: str = Field(nullable=False)
     Discount: int = Field(default=0, nullable=False)
     TotalBillAmount: float = Field(nullable=False)
-    BookingUid: str = Field(nullable=False, unique=True)
+    BookingUid: UUID = Field(nullable=False, unique=True, default_factory=uuid4)
 
     customer: Customer = Relationship(back_populates="bookings")
     car: Cars = Relationship(back_populates="bookings")

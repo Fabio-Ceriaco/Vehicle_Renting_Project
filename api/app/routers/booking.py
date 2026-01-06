@@ -51,12 +51,21 @@ def get_booking_by_id(booking_id: int, db: SessionDep):
     return booking
 
 
-@router.post(
-    "/new-booking",
-    response_model=CarBookingResponse,
-    status_code=status.HTTP_201_CREATED,
-)
+@router.post("/new-booking", response_model=CarBookingResponse)
 def create_new_booking(booking: CarBookingCreate, db: SessionDep):
+
+    customer = db.exec(select(Customer).where(Customer.Email == booking.Email)).first()
+    if not customer:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
+        )
+    car = db.exec(select(Cars).where(Cars.RegNo == booking.RegNo)).first()
+    if not car:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Car not found"
+        )
+    booking.CustID = int(customer.ID)
+    booking.CarID = int(car.ID)
 
     new_booking = CarBooking.model_validate(booking)
 
@@ -69,23 +78,22 @@ def create_new_booking(booking: CarBookingCreate, db: SessionDep):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Booking with this BookingUid already exists",
         )
-    customer = db.exec(select(Customer).where(Customer.Email == booking.Email)).first()
-    if not customer:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
-        )
-    car = db.exec(select(Cars).where(Cars.RegNo == booking.RegNo)).first()
-    if not car:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Car not found"
-        )
-    new_booking.CustID = int(customer.ID)
-    new_booking.CarID = int(car.ID)
     print(new_booking)
     db.add(new_booking)
     db.commit()
     db.refresh(new_booking)
-    return new_booking
+    return CarBookingResponse(
+        ID=new_booking.ID,
+        Name=customer.Name,
+        RegNo=car.RegNo,
+        City=customer.City,
+        MobileNo=customer.MobileNo,
+        Email=customer.Email,
+        BookingDate=new_booking.BookingDate,
+        Discount=new_booking.Discount,
+        TotalBillAmount=new_booking.TotalBillAmount,
+        BookingUid=new_booking.BookingUid,
+    )
 
 
 @router.put("/{booking_id}", response_model=CarBookingResponse)
@@ -97,7 +105,27 @@ def update_booking(booking_id: int, booking_update: CarBookingUpdate, db: Sessio
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Booking not found"
         )
-    booking_data = booking_update.model_dump(exclude_unset=True)
+
+    if booking_update.Email:
+        customer = db.exec(
+            select(Customer).where(Customer.Email == booking_update.Email)
+        ).first()
+        if not customer:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
+            )
+        existing_booking.CustID = customer.ID
+    if booking_update.RegNo:
+        car = db.exec(select(Cars).where(Cars.RegNo == booking_update.RegNo)).first()
+        if not car:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="Car not found"
+            )
+        existing_booking.CarID = car.ID
+    booking_data = booking_update.model_dump(
+        exclude={"Name", "RegNo", "City", "MobileNo", "Email", "CustID", "CarID"},
+        exclude_unset=True,
+    )
 
     for key, value in booking_data.items():
         setattr(existing_booking, key, value)

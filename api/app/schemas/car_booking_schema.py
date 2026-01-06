@@ -1,4 +1,5 @@
 from sqlmodel import SQLModel
+from uuid import UUID
 
 
 class CarBookingBase(SQLModel):
@@ -11,12 +12,12 @@ class CarBookingBase(SQLModel):
     BookingDate: str
     Discount: int = 0
     TotalBillAmount: float
-    BookingUid: str
 
 
 class CarBookingResponse(CarBookingBase):
 
     ID: int
+    BookingUid: UUID
 
 
 class CarBookingCreate(CarBookingBase):
@@ -26,9 +27,14 @@ class CarBookingCreate(CarBookingBase):
 
 class CarBookingUpdate(SQLModel):
 
-    CustID: int | None = None
-    CarID: int | None = None
+    Name: str | None = None
+    RegNo: str | None = None
+    City: str | None = None
+    MobileNo: str | None = None
+    Email: str | None = None
     BookingDate: str | None = None
     Discount: int | None = 0
     TotalBillAmount: float | None = None
-    BookingUid: str | None = None
+    BookingUid: UUID | None = None
+    CustID: int | None = None
+    CarID: int | None = None

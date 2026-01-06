@@ -105,8 +105,10 @@ export class AddBooking {
   }
 
   onSaveBooking() {
+    console.log(this.bookingFormData());
     this.apiService.newBooking(this.bookingFormData()).subscribe((res) => {
       if (res) {
+        console.log(res);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -116,6 +118,7 @@ export class AddBooking {
         this.closeModal();
         this.refresh.emit();
       } else {
+        console.log(res);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
