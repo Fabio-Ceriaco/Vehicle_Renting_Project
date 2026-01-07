@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.dataBase.db_conn import create_db_and_tables
-from app.routers import booking, cars, customer
+from app.routers import booking, cars, customer, dashboard
 
 
 @asynccontextmanager
@@ -26,3 +26,4 @@ app.add_middleware(
 app.include_router(booking.router)
 app.include_router(cars.router)
 app.include_router(customer.router)
+app.include_router(dashboard.router)

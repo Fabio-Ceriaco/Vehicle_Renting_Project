@@ -123,8 +123,7 @@ def update_booking(booking_id: int, booking_update: CarBookingUpdate, db: Sessio
             )
         existing_booking.CarID = car.ID
     booking_data = booking_update.model_dump(
-        exclude={"Name", "RegNo", "City", "MobileNo", "Email", "CustID", "CarID"},
-        exclude_unset=True,
+        exclude_unset=True, exclude={"Email", "RegNo", "CustID", "CarID"}
     )
 
     for key, value in booking_data.items():
@@ -132,7 +131,18 @@ def update_booking(booking_id: int, booking_update: CarBookingUpdate, db: Sessio
     db.add(existing_booking)
     db.commit()
     db.refresh(existing_booking)
-    return existing_booking
+    return CarBookingResponse(
+        ID=existing_booking.ID,
+        Name=existing_booking.customer.Name,
+        RegNo=existing_booking.car.RegNo,
+        City=existing_booking.customer.City,
+        MobileNo=existing_booking.customer.MobileNo,
+        Email=existing_booking.customer.Email,
+        BookingDate=existing_booking.BookingDate,
+        Discount=existing_booking.Discount,
+        TotalBillAmount=existing_booking.TotalBillAmount,
+        BookingUid=existing_booking.BookingUid,
+    )
 
 
 @router.delete("/{booking_id}")

@@ -20,21 +20,23 @@ class CarBookingResponse(CarBookingBase):
     BookingUid: UUID
 
 
-class CarBookingCreate(CarBookingBase):
+class CarBookingCreate(SQLModel):
+
+    Email: str
+    RegNo: str
+    BookingDate: str
+    Discount: int = 0
+    TotalBillAmount: float
     CustID: int | None = None
     CarID: int | None = None
 
 
 class CarBookingUpdate(SQLModel):
 
-    Name: str | None = None
-    RegNo: str | None = None
-    City: str | None = None
-    MobileNo: str | None = None
     Email: str | None = None
+    RegNo: str | None = None
     BookingDate: str | None = None
-    Discount: int | None = 0
+    Discount: int | None = None
     TotalBillAmount: float | None = None
-    BookingUid: UUID | None = None
     CustID: int | None = None
     CarID: int | None = None
