@@ -5,6 +5,8 @@ import { Login } from './pages/login/login';
 import { Layout } from './pages/layout/layout';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Customer } from './pages/customer/customer';
+import { authGuard } from './guard/auth-guard';
+import { NoAuthGuard } from './guard/no-auth-guard';
 
 export const routes: Routes = [
   {
@@ -15,10 +17,12 @@ export const routes: Routes = [
   {
     path: 'login',
     component: Login,
+    canActivate: [NoAuthGuard], // Prevent access if already authenticated
   },
   {
     path: '',
     component: Layout,
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',

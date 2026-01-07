@@ -12,35 +12,27 @@
     </div>
 
     <form action="">
-      <label for="">Customer Name</label>
-      <input type="text" (change)="updateForm('Name', $event)"
-        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter customer name" />
-      <label for="">Customer City</label>
-      <input type="text" (change)="updateForm('City', $event)"
-        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter customer city" />
-      <label for="">Mobile No</label>
-      <input type="text" (change)="updateForm('MobileNo', $event)"
-        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter mobile number" />
-      <label for="">Email</label>
-      <input type="email" (change)="updateForm('Email', $event)"
+
+      <label for="">Customer Email</label>
+      <input type="email" (change)="updateForm('Email', $event)" [value]="bookingFormData().Email"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter email" />
       <label for="">Select Car</label>
 
-      <select (change)="updateForm('RegNo', $event)" class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4"
-        name="" id="">
+      <select (change)="updateForm('RegNo', $event)" [value]="bookingFormData().RegNo"
+        class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" name="" id="">
         <option value="" disabled selected>Select Car</option>
         @for (car of carsList(); track $index) {
         <option value="{{car.RegNo}}">{{car.RegNo}}</option>
         }
       </select>
       <label for="">Booking Date</label>
-      <input type="date" (change)="updateForm('BookingDate', $event)"
+      <input type="date" (change)="updateForm('BookingDate', $event)" [value]="bookingFormData().BookingDate"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter booking date" />
       <label for="">Discount</label>
-      <input type="number" (change)="updateForm('Discount', $event)"
+      <input type="number" (change)="updateForm('Discount', $event)" [value]="bookingFormData().Discount"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter discount" />
       <label for="">Total Bill Amount</label>
-      <input type="number" (change)="updateForm('TotalBillAmount', $event)"
+      <input type="number" (change)="updateForm('TotalBillAmount', $event)" [value]="bookingFormData().TotalBillAmount"
         class="w-full border border-gray-300 rounded px-3 py-2 mt-1 mb-4" placeholder="Enter total bill amount" />
     </form>
 
@@ -49,13 +41,17 @@
         class="flex-1 bg-red-300 text-white p-2 rounded hover:bg-red-400 transition">
         Cancel
       </button>
+      @if (isEditMode()) {
+      <button type="submit" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+        (click)="updateBookingData()">
+        Update
+      </button>
+      }@else {
       <button type="submit" class="flex-1 bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
         (click)="onSaveBooking()">
         Submit
       </button>
-      <button type="button" class="flex-1 bg-green-600 text-white p-2 rounded hover:bg-green-700 transition">
-        Update
-      </button>
+      }
     </div>
   </div>
 </div>

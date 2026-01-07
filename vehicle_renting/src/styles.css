@@ -1,3 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+* {
+  border: 1px red solid;
+  box-sizing: border-box;
+}

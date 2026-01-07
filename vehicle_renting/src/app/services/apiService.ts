@@ -68,4 +68,9 @@ export class ApiService {
   deleteBooking(bookingId: number) {
     return this.http.delete(`${this.apiUrl}/bookings/${bookingId}`);
   }
+
+  // Get dashboard data
+  getDashboardData() {
+    return this.http.get<any>(`${this.apiUrl}/dashboard/dashboard`);
+  }
 }

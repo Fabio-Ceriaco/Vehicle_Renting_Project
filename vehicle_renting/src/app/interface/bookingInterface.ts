@@ -1,13 +1,12 @@
 export interface Bookings {
   ID?: number;
-  Name: string;
+  Name?: string;
   RegNo: string;
-  City: string;
-  MobileNo: string;
+  City?: string;
+  MobileNo?: string;
   Email: string;
   BookingDate: string;
   Discount: number;
   TotalBillAmount: number;
   BookingUid: string;
-  BookingID: number;
 }

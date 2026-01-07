@@ -29,6 +29,7 @@ export class Login {
 
   onLogin() {
     if (this.username().value?.toLowerCase() === 'admin' && this.password().value === '223344') {
+      localStorage.setItem('isLoggedIn', 'true');
       this.router.navigateByUrl('/dashboard');
     } else {
       this.messageService.add({

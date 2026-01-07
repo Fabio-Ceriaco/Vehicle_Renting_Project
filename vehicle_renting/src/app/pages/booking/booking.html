@@ -1,9 +1,11 @@
 <div class="flex flex-col my-auto gap-6 px-6 md:px-16 lg:px-24 xl:px-32 py-12 justify-center">
   <button type="button" class="bg-blue-600 text-white p-2 rounded-xl shadow-lg/80" (click)="openAddBookingModal()">Add
     Booking</button>
-  <div class="basis-1 flex flex-row gap-6  justify-center">
-    <app-booking-table [bookings]="bookingList()" />
+  <div class="flex flex-row gap-6  justify-center p-6 bg-white fit-content">
+    <app-booking-table [bookings]="bookingList()" (onEditBooking)="openEditBookingModal($event)"
+      (onDeleteBooking)="handelDeleteBooking($event)" />
 
   </div>
-  <app-add-booking [isOpen]="isAddBookingModalOpen()" (onClose)="closeAddBookingModal()" />
+  <app-add-booking [isOpen]="isAddBookingModalOpen()" [updateBooking]="selectedBooking()"
+    (onClose)="closeAddBookingModal()" (refresh)="loadBookings()" />
 </div>

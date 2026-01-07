@@ -14,16 +14,12 @@ import type { Car } from '../../interface/carInterface';
 })
 export class AddBooking {
   bookingFormData = signal<Bookings>({
-    Name: '',
     RegNo: '',
-    City: '',
-    MobileNo: '',
     Email: '',
     BookingDate: '',
     Discount: 0,
     TotalBillAmount: 0,
     BookingUid: '',
-    BookingID: 0,
   });
 
   carsList = signal<Car[]>([]);
@@ -51,16 +47,12 @@ export class AddBooking {
 
   resetForm() {
     this.bookingFormData.set({
-      Name: '',
       RegNo: '',
-      City: '',
-      MobileNo: '',
       Email: '',
       BookingDate: '',
       Discount: 0,
       TotalBillAmount: 0,
       BookingUid: '',
-      BookingID: 0,
     });
   }
 
@@ -83,7 +75,7 @@ export class AddBooking {
 
   updateBookingData() {
     this.apiService
-      .updateBooking(this.bookingFormData().BookingID!, this.bookingFormData())
+      .updateBooking(this.bookingFormData().ID!, this.bookingFormData())
       .subscribe((res) => {
         if (res) {
           this.messageService.add({

@@ -1,4 +1,4 @@
-<table class="min-w-full divide-y divide-gray-200 border border-gray-200 ">
+<table class="flex flex-col  divide-y divide-gray-200 border border-gray-200 rounded shadow-md/80">
   <thead>
     <tr>
       <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
@@ -21,15 +21,15 @@
       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.RegNo}}</td>
       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.Discount}}</td>
       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{booking.TotalBillAmount}}</td>
-      <!-- <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+      <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
         <button type="button"
           class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-hidden focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none"
-          (click)="deleteCustomer(customer)">Delete</button>
+          (click)="deleteBooking(booking)">Delete</button>
         |
         <button type="button"
           class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
-          (click)="editCustomer(customer)">Edit</button>
-      </td> -->
+          (click)="editBooking(booking)">Edit</button>
+      </td>
     </tr>
     }
   </tbody>

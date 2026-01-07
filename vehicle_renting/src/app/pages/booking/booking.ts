@@ -22,9 +22,14 @@ export class Booking implements OnInit {
 
   bookingList = signal<Bookings[]>([]);
 
-  selectedBooking = signal<Booking | null>(null);
+  selectedBooking = signal<Bookings | null>(null);
 
   openAddBookingModal() {
+    this.isAddBookingModalOpen.set(true);
+  }
+
+  openEditBookingModal(booking: Bookings) {
+    this.selectedBooking.set(booking);
     this.isAddBookingModalOpen.set(true);
   }
   closeAddBookingModal() {

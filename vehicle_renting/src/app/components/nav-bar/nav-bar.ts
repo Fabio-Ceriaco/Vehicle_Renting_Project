@@ -1,5 +1,5 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,6 +20,14 @@ export class NavBar {
       mobileMenu?.classList.toggle('hidden');
     } else {
       console.error('Menu button or mobile menu element not found.');
+    }
+  }
+
+  router = inject(Router);
+  logout() {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      localStorage.removeItem('isLoggedIn');
+      this.router.navigate(['/login']);
     }
   }
 }
