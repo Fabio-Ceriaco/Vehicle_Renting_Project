@@ -16,6 +16,9 @@ The goal of this project is to provide a seamless and efficient vehicle rental e
 
 # FrameWorks
 
-  # BackEnd
+  ## BackEnd
+  
+    - FastAPI
 
-  # FrontEnd
+  ## FrontEnd
+     - Angular
